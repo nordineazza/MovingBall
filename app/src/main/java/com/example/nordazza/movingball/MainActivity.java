@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -32,11 +33,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         //Affectation des valeurs
-        pts = Integer.parseInt(et_pts.getText().toString());
-        speedX = Integer.parseInt(et_speedX.getText().toString());
-        speedY = Integer.parseInt(et_speedY.getText().toString());
-        frameSpeed = Integer.parseInt(et_frameSpeed.getText().toString());
+        try{
+            pts = Integer.parseInt(et_pts.getText().toString());
+            speedX = Integer.parseInt(et_speedX.getText().toString());
+            speedY = Integer.parseInt(et_speedY.getText().toString());
+            frameSpeed = Integer.parseInt(et_frameSpeed.getText().toString());
 
+        }
+        catch(NumberFormatException e)
+        {
+            Toast.makeText(getApplicationContext(), "Remplir tout les champs SVP", Toast.LENGTH_SHORT).show();
+        }
         System.out.println("pts=" + pts + " speedX=" + speedX + " speedY=" +speedY + " frameSpeed=" + frameSpeed);
 
         //Intent intent = new Intent(this, GameActivity.class);
